@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
-use Illuminate\Support\Facades\Validator;
 
 class CrudController extends Controller
 {
@@ -47,6 +46,12 @@ class CrudController extends Controller
         ]);
 
         return redirect()->back()->with(['success' => __('messages.Offer saved successfully!')]);
+
+    }
+    public function getAllOffers()
+    {
+        $offers = Offer::select('id', 'name', 'price', 'detalis')->get(); //return collection
+        return view('offers.all', compact('offers'));
 
     }
     // protected function getRules()

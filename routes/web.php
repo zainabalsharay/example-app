@@ -221,5 +221,7 @@ Route::group([
         //Route::get('store', [CrudController::class, 'store']);
         Route::get('create', [CrudController::class, 'create']);
         Route::post('store', [CrudController::class, 'store'])->name('offers.store');
+        Route::get('all', [CrudController::class, 'getAllOffers']);
     });
+
 });
