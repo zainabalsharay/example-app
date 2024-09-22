@@ -21,5 +21,10 @@ return [
     'Offer Name' => 'Offer Name',
     'Offer detalis' => 'Offer detalis exactly',
     'Save Offer' => 'Save',
-    'Offer saved successfully!' => 'Offer saved successfully',
+    'Offer saved successfully!' => 'Offer saved successfully!',
+    'Operation' => 'Operation',
+    'update' => 'update',
+    'Update your offer' => 'Update Offer',
+    'Update Offer' => 'Update Offer',
+    'To update successfully!' => 'To update successfully!',
 ];

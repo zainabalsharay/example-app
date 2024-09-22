@@ -211,17 +211,24 @@ Route::get('/', function () {
     return 'Home';
 });
 
-Route::get('fillable', [CrudController::class, 'getoffers']);
+Route::get('fillable', [CrudController::class, 'getOffers']);
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
 ], function () {
     Route::group(['prefix' => 'offers'], function () {
-        //Route::get('store', [CrudController::class, 'store']);
-        Route::get('create', [CrudController::class, 'create']);
-        Route::post('store', [CrudController::class, 'store'])->name('offers.store');
+        //create
+        Route::get('create', [CrudController::class, 'createOffer']);
+        //store or insert into DB
+        Route::post('store', [CrudController::class, 'storeOffer'])->name('offers.store');
+        //edit
+        Route::get('edit/{offer_id}', [CrudController::class, 'editOffer']);
+        //update
+        Route::post('update/{offer_id}', [CrudController::class, 'updateOffer'])->name('offers.update');
+
         Route::get('all', [CrudController::class, 'getAllOffers']);
+
     });
 
 });

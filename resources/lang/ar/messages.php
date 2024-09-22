@@ -21,5 +21,10 @@ return [
     'Offer Name' => 'اسم العرض',
     'Offer detalis' => 'تفاصيل العرض',
     'Save Offer' => 'حفظ العرض',
-    'Offer saved successfully!' => 'تم حفظ العرض بنجاح!',
+    'Offer saved successfully!' => '! تم حفظ العرض بنجاح',
+    'Operation' => 'العمليات',
+    'update' => 'تحديث',
+    'Update your offer' => 'تعديل العرض',
+    'Update Offer' => 'تحديث العرض',
+    'To update successfully!' => '! تم التحديث بنجاح ',
 ];

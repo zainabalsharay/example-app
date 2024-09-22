@@ -886,12 +886,12 @@
                 </div>
             @endif --}}
 
-            <h1 style="font-size: 3em">{{ __('messages.Add your offer') }}</h1><br><br>
-            <form method="POST" action="{{ route('offers.store') }}">
+            <h1 style="font-size: 3em">{{ __('messages.Update your offer') }}</h1><br><br>
+            <form method="POST" action="{{ route('offers.update', $offer->id) }}">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">{{ __('messages.Offer Name ar') }}</label>
-                    <input type="text" class="form-control" name="name_ar"
+                    <input type="text" class="form-control" name="name_ar" value="{{ $offer->name_ar }}"
                         placeholder="{{ __('messages.Offer Name ar') }}">
                     @error('name_ar')
                         <small class="form-text text-danger">{{ $message }}</small>
@@ -899,7 +899,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">{{ __('messages.Offer Name en') }}</label>
-                    <input type="text" class="form-control" name="name_en"
+                    <input type="text" class="form-control" name="name_en" value="{{ $offer->name_en }}"
                         placeholder="{{ __('messages.Offer Name en') }}">
                     @error('name_en')
                         <small class="form-text text-danger">{{ $message }}</small>
@@ -909,7 +909,7 @@
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">{{ __('messages.Offer Price') }}</label>
-                    <input type="text" class="form-control" name="price"
+                    <input type="text" class="form-control" name="price" value="{{ $offer->price }}"
                         placeholder="{{ __('messages.Offer Price') }}">
                     @error('price')
                         <small class="form-text text-danger">{{ $message }}</small>
@@ -918,7 +918,7 @@
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">{{ __('messages.Offer detalis ar') }}</label>
-                    <input type="text" class="form-control" name="detalis_ar"
+                    <input type="text" class="form-control" name="detalis_ar" value="{{ $offer->detalis_ar }}"
                         placeholder="{{ __('messages.Offer detalis ar') }}">
                     @error('detalis_ar')
                         <small class="form-text text-danger">{{ $message }}</small>
@@ -926,7 +926,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">{{ __('messages.Offer detalis en') }}</label>
-                    <input type="text" class="form-control" name="detalis_en"
+                    <input type="text" class="form-control" name="detalis_en" value="{{ $offer->detalis_en }}"
                         placeholder="{{ __('messages.Offer detalis en') }}">
                     @error('detalis_en')
                         <small class="form-text text-danger">{{ $message }}</small>
@@ -934,7 +934,7 @@
                 </div>
                 <br><br>
 
-                <button type="submit" class="btn btn-primary">{{ __('messages.Save Offer') }}</button>
+                <button type="submit" class="btn btn-primary">{{ __('messages.Update Offer') }}</button>
             </form>
 
         </div>

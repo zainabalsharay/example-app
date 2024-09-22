@@ -9,25 +9,18 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 class CrudController extends Controller
 {
     //
-    public function getoffers()
+    public function getOffers()
     {
-        return Offer::select('id', 'name')->get();
+        return Offer::select('id', 'name_ar')->get();
 
     }
-    // public function store()
-    // {
-    //     Offer::create([
-    //         'name' => 'zainab',
-    //         'price' => 66,
-    //         'detalis' => 'offer details',
-    //     ]);
-    // }
-    public function create()
+
+    public function createOffer()
     {
         return view('offers.create');
     }
 
-    public function store(OfferRequest $request)
+    public function storeOffer(OfferRequest $request)
     {
         //validate data before insert to database
         // $rules = $this->getRules();
@@ -50,6 +43,38 @@ class CrudController extends Controller
         ]);
 
         return redirect()->back()->with(['success' => __('messages.Offer saved successfully!')]);
+
+    }
+    public function editOffer($offer_id)
+    {
+        // Offer::findOrFail($offer_id);
+        $offer = Offer::find($offer_id); //search in given table of model offer id only
+        if (!$offer) {
+            return redirect()->back();
+        }
+        $offer = Offer::select('id', 'name_ar', 'name_en', 'price', 'detalis_ar', 'detalis_en')->find($offer_id);
+
+        return view('offers.edit', compact('offer'));
+    }
+    public function updateOffer(OfferRequest $request, $offer_id)
+    {
+        //validatio to another file OfferRequest
+
+        //check if offer exists
+        $offer = Offer::find($offer_id);
+        if (!$offer) {
+            return redirect()->back();
+        }
+        //update data
+        $offer->update($request->all());
+        return redirect()->back()->with(['success' => __('messages.To update successfully!')]);
+
+        //another way to update
+        // $offer->update([
+        //     'name_ar' => $request->name_ar,
+        //     'name_en' => $request->name_en,
+        //     'price' => $request->price,
+        // ]);
 
     }
     public function getAllOffers()
