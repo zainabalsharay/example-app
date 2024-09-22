@@ -226,7 +226,7 @@ Route::group([
         Route::get('edit/{offer_id}', [CrudController::class, 'editOffer']);
         //update
         Route::post('update/{offer_id}', [CrudController::class, 'updateOffer'])->name('offers.update');
-
+        //retrieve data
         Route::get('all', [CrudController::class, 'getAllOffers']);
 
     });
