@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CrudController extends Controller
 {
@@ -53,7 +54,11 @@ class CrudController extends Controller
     }
     public function getAllOffers()
     {
-        $offers = Offer::select('id', 'name_ar', 'name_en', 'price', 'detalis_ar', 'detalis_en')->get(); //return collection
+        $offers = Offer::select(
+            'id',
+            'price',
+            'name_' . LaravelLocalization::getCurrentLocale() . ' as name',
+            'detalis_' . LaravelLocalization::getCurrentLocale() . ' as detalis')->get(); //return collection
         return view('offers.all', compact('offers'));
 
     }

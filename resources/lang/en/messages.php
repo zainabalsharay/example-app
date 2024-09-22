@@ -18,6 +18,8 @@ return [
     'Offer Price' => 'Offer Price',
     'Offer detalis ar' => 'Offer detalis exactly ar',
     'Offer detalis en' => 'Offer detalis exactly en',
+    'Offer Name' => 'Offer Name',
+    'Offer detalis' => 'Offer detalis exactly',
     'Save Offer' => 'Save',
     'Offer saved successfully!' => 'Offer saved successfully',
 ];

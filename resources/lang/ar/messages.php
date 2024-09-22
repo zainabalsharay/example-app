@@ -18,6 +18,8 @@ return [
     'Offer Price' => 'سعر العرض',
     'Offer detalis ar' => 'معلومات العرض عربي',
     'Offer detalis en' => 'معلومات العرض انجليزي',
+    'Offer Name' => 'اسم العرض',
+    'Offer detalis' => 'تفاصيل العرض',
     'Save Offer' => 'حفظ العرض',
     'Offer saved successfully!' => 'تم حفظ العرض بنجاح!',
 ];
