@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ __('messages.Laravel') }}</title>
 
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
@@ -842,7 +842,7 @@
 
 <body class="antialiased">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">{{ __('messages.Navbar') }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -861,8 +861,10 @@
                 @endforeach
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="{{ trans('messages.Search') }}"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0"
+                    type="submit">{{ trans('messages.Search') }}</button>
             </form>
         </div>
     </nav>
@@ -878,40 +880,43 @@
             @endif
 
             {{-- عرض رسالة الفشل  --}}
-            @if (Session::has('error'))
+            {{-- @if (Session::has('error'))
                 <div class="alert alert-success">
                     {{ Session::get('error') }}
                 </div>
-            @endif
+            @endif --}}
 
-            Add your offer
+            {{ __('messages.Add your offer') }}
             <form method="POST" action="{{ route('offers.store') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Offer Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Name">
+                    <label for="exampleInputEmail1">{{ __('messages.Offer Name') }}</label>
+                    <input type="text" class="form-control" name="name"
+                        placeholder="{{ __('messages.Offer Name') }}">
                     @error('name')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
 
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Offer Price</label>
-                    <input type="text" class="form-control" name="price" placeholder="Price">
+                    <label for="exampleInputPassword1">{{ __('messages.Offer Price') }}</label>
+                    <input type="text" class="form-control" name="price"
+                        placeholder="{{ __('messages.Offer Price') }}">
                     @error('price')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Offer detalis</label>
-                    <input type="text" class="form-control" name="detalis" placeholder="Detalis">
+                    <label for="exampleInputPassword1">{{ __('messages.Offer detalis') }}</label>
+                    <input type="text" class="form-control" name="detalis"
+                        placeholder="{{ __('messages.Offer detalis') }}">
                     @error('detalis')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <br><br>
 
-                <button type="submit" class="btn btn-primary">Save Offer</button>
+                <button type="submit" class="btn btn-primary">{{ __('messages.Save Offer') }}</button>
             </form>
 
         </div>
