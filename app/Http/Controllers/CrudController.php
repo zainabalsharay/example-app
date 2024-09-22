@@ -53,7 +53,7 @@ class CrudController extends Controller
     }
     public function getAllOffers()
     {
-        $offers = Offer::select('id', 'name', 'price', 'detalis')->get(); //return collection
+        $offers = Offer::select('id', 'name_ar', 'name_en', 'price', 'detalis_ar', 'detalis_en')->get(); //return collection
         return view('offers.all', compact('offers'));
 
     }

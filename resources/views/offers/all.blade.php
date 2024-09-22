@@ -872,18 +872,22 @@
         <thead>
             <tr>
                 <th scope="col">{{ __('messages.Id') }}</th>
-                <th scope="col">{{ __('messages.Offer Name') }}</th>
+                <th scope="col">{{ __('messages.Offer Name ar') }}</th>
+                <th scope="col">{{ __('messages.Offer Name en') }}</th>
                 <th scope="col">{{ __('messages.Offer Price') }}</th>
-                <th scope="col">{{ __('messages.Offer detalis') }}</th>
+                <th scope="col">{{ __('messages.Offer detalis ar') }}</th>
+                <th scope="col">{{ __('messages.Offer detalis en') }}</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($offers as $offer)
                 <tr>
                     <th scope="row">{{ $offer->id }}</th>
-                    <td>{{ $offer->name }}</td>
+                    <td>{{ $offer->name_ar }}</td>
+                    <td>{{ $offer->name_en }}</td>
                     <td>{{ $offer->price }}</td>
-                    <td>{{ $offer->detalis }}</td>
+                    <td>{{ $offer->detalis_ar }}</td>
+                    <td>{{ $offer->detalis_en }}</td>
                 </tr>
             @endforeach
         </tbody>
