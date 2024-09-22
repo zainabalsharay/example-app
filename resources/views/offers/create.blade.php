@@ -890,14 +890,23 @@
             <form method="POST" action="{{ route('offers.store') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="exampleInputEmail1">{{ __('messages.Offer Name') }}</label>
-                    <input type="text" class="form-control" name="name"
-                        placeholder="{{ __('messages.Offer Name') }}">
-                    @error('name')
+                    <label for="exampleInputEmail1">{{ __('messages.Offer Name ar') }}</label>
+                    <input type="text" class="form-control" name="name_ar"
+                        placeholder="{{ __('messages.Offer Name ar') }}">
+                    @error('name_ar')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
-
                 </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{{ __('messages.Offer Name en') }}</label>
+                    <input type="text" class="form-control" name="name_en"
+                        placeholder="{{ __('messages.Offer Name en') }}">
+                    @error('name_en')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+
                 <div class="form-group">
                     <label for="exampleInputPassword1">{{ __('messages.Offer Price') }}</label>
                     <input type="text" class="form-control" name="price"
@@ -906,11 +915,20 @@
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
+
                 <div class="form-group">
-                    <label for="exampleInputPassword1">{{ __('messages.Offer detalis') }}</label>
-                    <input type="text" class="form-control" name="detalis"
-                        placeholder="{{ __('messages.Offer detalis') }}">
-                    @error('detalis')
+                    <label for="exampleInputPassword1">{{ __('messages.Offer detalis ar') }}</label>
+                    <input type="text" class="form-control" name="detalis_ar"
+                        placeholder="{{ __('messages.Offer detalis ar') }}">
+                    @error('detalis_ar')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">{{ __('messages.Offer detalis en') }}</label>
+                    <input type="text" class="form-control" name="detalis_en"
+                        placeholder="{{ __('messages.Offer detalis en') }}">
+                    @error('detalis_en')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>

@@ -40,9 +40,12 @@ class CrudController extends Controller
 
         //insert
         Offer::create([
-            'name' => $request->name,
+            'name_ar' => $request->name_ar,
+            'name_en' => $request->name_en,
             'price' => $request->price,
-            'detalis' => $request->detalis,
+            'detalis_ar' => $request->detalis_ar,
+            'detalis_en' => $request->detalis_en,
+
         ]);
 
         return redirect()->back()->with(['success' => __('messages.Offer saved successfully!')]);

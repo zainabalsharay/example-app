@@ -871,10 +871,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Offter Name</th>
-                <th scope="col">Offer Price</th>
-                <th scope="col">Offer Details</th>
+                <th scope="col">{{ __('messages.Id') }}</th>
+                <th scope="col">{{ __('messages.Offer Name') }}</th>
+                <th scope="col">{{ __('messages.Offer Price') }}</th>
+                <th scope="col">{{ __('messages.Offer detalis') }}</th>
             </tr>
         </thead>
         <tbody>
