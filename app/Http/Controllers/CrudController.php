@@ -62,6 +62,18 @@ class CrudController extends Controller
 
         return view('offers.edit', compact('offer'));
     }
+
+    public function deleteOffer($offer_id)
+    {
+        $offer = Offer::find($offer_id); //search in given table of model offer id only Offer::where('id','=','$offer_id')->first();
+        if (!$offer) {
+            return redirect()->back()->with(['error' => __('messages.Offer not exist')]);
+        }
+        $offer->delete();
+        return redirect()->route('offers.all')->with(['success' => __('messages.offer deleted successfully')]);
+
+    }
+
     public function updateOffer(OfferRequest $request, $offer_id)
     {
         //validatio to another file OfferRequest
@@ -81,8 +93,8 @@ class CrudController extends Controller
         //     'name_en' => $request->name_en,
         //     'price' => $request->price,
         // ]);
-
     }
+
     public function getAllOffers()
     {
         $offers = Offer::select(
@@ -91,8 +103,8 @@ class CrudController extends Controller
             'name_' . LaravelLocalization::getCurrentLocale() . ' as name',
             'detalis_' . LaravelLocalization::getCurrentLocale() . ' as detalis')->get(); //return collection
         return view('offers.all', compact('offers'));
-
     }
+
     // protected function getRules()
     // {
     //     return $rules = [

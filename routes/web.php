@@ -4,8 +4,8 @@ use App\Enums\CategoryEnum;
 use App\Http\Controllers\Admin\SecondController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\Front\UserController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\Youtub\YoutubController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -205,7 +205,7 @@ Route::resource('news', NewsController::class);
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('verified');
+//Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('verified');
 
 Route::get('/', function () {
     return 'Home';
@@ -226,9 +226,12 @@ Route::group([
         Route::get('edit/{offer_id}', [CrudController::class, 'editOffer']);
         //update
         Route::post('update/{offer_id}', [CrudController::class, 'updateOffer'])->name('offers.update');
-        //retrieve data
-        Route::get('all', [CrudController::class, 'getAllOffers']);
-
+        //retrieve all data with database
+        Route::get('all', [CrudController::class, 'getAllOffers'])->name('offers.all');
+        //delete
+        Route::get('delete/{offer_id}', [CrudController::class, 'deleteOffer'])->name('offers.delete');
     });
+    //route of youtup
+    Route::get('/youtube', [YoutubController::class, 'getVideo'])->name('youtube')->middleware('verified');
 
 });

@@ -20,6 +20,7 @@ return [
     'Offer detalis en' => 'Offer detalis exactly en',
     'Offer Name' => 'Offer Name',
     'Offer detalis' => 'Offer detalis exactly',
+    'Offer image' => 'Offer image',
     'Save Offer' => 'Save',
     'Offer saved successfully!' => 'Offer saved successfully!',
     'Operation' => 'Operation',
@@ -28,4 +29,7 @@ return [
     'Update Offer' => 'Update Offer',
     'To update successfully!' => 'To update successfully!',
     'choose image offer' => 'choose image offer',
+    'delete' => 'delete',
+    'Offer not exist' => 'Offer is not found',
+    'offer deleted successfully' => 'offer deleted successfully',
 ];

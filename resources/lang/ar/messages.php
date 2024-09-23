@@ -20,6 +20,7 @@ return [
     'Offer detalis en' => 'معلومات العرض انجليزي',
     'Offer Name' => 'اسم العرض',
     'Offer detalis' => 'تفاصيل العرض',
+    'Offer image' => 'صوره العرض',
     'Save Offer' => 'حفظ العرض',
     'Offer saved successfully!' => '! تم حفظ العرض بنجاح',
     'Operation' => 'العمليات',
@@ -28,4 +29,7 @@ return [
     'Update Offer' => 'تحديث العرض',
     'To update successfully!' => '! تم التحديث بنجاح ',
     'choose image offer' => 'اختر صوره العرض',
+    'delete' => 'حذف',
+    'Offer not exist' => 'العرض غير موجود',
+    'offer deleted successfully' => 'تم حذف العرض بنجاح',
 ];

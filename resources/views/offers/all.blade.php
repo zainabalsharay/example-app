@@ -868,6 +868,19 @@
             </form>
         </div>
     </nav>
+
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+
+    @if (Session::has('error'))
+        <div class="alert alert-danger">
+            {{ Session::get('error') }}
+        </div>
+    @endif
+
     <table class="table">
         <thead>
             <tr>
@@ -875,7 +888,9 @@
                 <th scope="col">{{ __('messages.Offer Name') }}</th>
                 <th scope="col">{{ __('messages.Offer Price') }}</th>
                 <th scope="col">{{ __('messages.Offer detalis') }}</th>
+                <th scope="col">{{ __('messages.Offer image') }}</th>
                 <th scope="col">{{ __('messages.Operation') }}</th>
+
             </tr>
         </thead>
         <tbody>
@@ -885,11 +900,14 @@
                     <td>{{ $offer->name }}</td>
                     <td>{{ $offer->price }}</td>
                     <td>{{ $offer->detalis }}</td>
-                    <td><button class="btn btn-success">
-                            <a href="{{ url('offers/edit/' . $offer->id) }}">
-                                {{ __('messages.update') }}
-                            </a>
-                        </button>
+                    <td><img src="{{ asset('images/offers/' . $offer->photo) }}"></td>
+                    <td>
+                        <a href="{{ url('offers/edit/' . $offer->id) }}" class="btn btn-success">
+                            {{ __('messages.update') }}
+                        </a>
+                        <a href="{{ route('offers.delete', $offer->id) }}" class="btn btn-danger">
+                            {{ __('messages.delete') }}
+                        </a>
                     </td>
                 </tr>
             @endforeach
