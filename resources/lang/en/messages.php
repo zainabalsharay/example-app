@@ -27,4 +27,5 @@ return [
     'Update your offer' => 'Update Offer',
     'Update Offer' => 'Update Offer',
     'To update successfully!' => 'To update successfully!',
+    'choose image offer' => 'choose image offer',
 ];

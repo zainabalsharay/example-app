@@ -27,4 +27,5 @@ return [
     'Update your offer' => 'تعديل العرض',
     'Update Offer' => 'تحديث العرض',
     'To update successfully!' => '! تم التحديث بنجاح ',
+    'choose image offer' => 'اختر صوره العرض',
 ];

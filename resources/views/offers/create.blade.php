@@ -887,8 +887,16 @@
             @endif --}}
 
             <h1 style="font-size: 3em">{{ __('messages.Add your offer') }}</h1><br><br>
-            <form method="POST" action="{{ route('offers.store') }}">
+            <form method="POST" action="{{ route('offers.store') }}" enctype="multipart/form-data">
                 @csrf
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{{ __('messages.choose image offer') }}</label>
+                    <input type="file" class="form-control" name="photo">
+                    @error('photo')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label for="exampleInputEmail1">{{ __('messages.Offer Name ar') }}</label>
                     <input type="text" class="form-control" name="name_ar"

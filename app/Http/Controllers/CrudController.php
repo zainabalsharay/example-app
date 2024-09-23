@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
+use App\Traits\OfferTrait;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CrudController extends Controller
 {
-    //
+    use OfferTrait;
+
     public function getOffers()
     {
         return Offer::select('id', 'name_ar')->get();
@@ -32,8 +34,11 @@ class CrudController extends Controller
         //     return redirect()->back()->withErrors($validator)->withInput($request->all());
         // }
 
+        $file_name = $this->saveImage($request->photo, 'images/offers');
+
         //insert
         Offer::create([
+            'photo' => $file_name,
             'name_ar' => $request->name_ar,
             'name_en' => $request->name_en,
             'price' => $request->price,
@@ -45,6 +50,7 @@ class CrudController extends Controller
         return redirect()->back()->with(['success' => __('messages.Offer saved successfully!')]);
 
     }
+
     public function editOffer($offer_id)
     {
         // Offer::findOrFail($offer_id);
