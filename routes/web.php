@@ -231,7 +231,7 @@ Route::group([
         //delete
         Route::get('delete/{offer_id}', [CrudController::class, 'deleteOffer'])->name('offers.delete');
     });
-    //route of youtup
+    //route of youtub
     Route::get('/youtube', [YoutubController::class, 'getVideo'])->name('youtube')->middleware('verified');
 
 });

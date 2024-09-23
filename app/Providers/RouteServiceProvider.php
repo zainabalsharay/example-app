@@ -2,10 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -17,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/youtube';
 
     /**
      * This namespace is applied to your controller routes.
@@ -56,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define the "admin" routes for the application.
      */
-    
+
     protected function mapAdminRoutes()
     {
         Route::middleware('web')
