@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\SecondController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\Youtub\YoutubController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -235,3 +236,12 @@ Route::group([
     Route::get('/youtube', [YoutubController::class, 'getVideo'])->name('youtube')->middleware('verified');
 
 });
+
+############################# Begin Ajax routes ########################################
+Route::group(['prefix' => 'Ajax-offers'], function () {
+    Route::get('create', [OfferController::class, 'create']);
+    Route::post('store', [OfferController::class, 'store'])->name('ajax.offers.store');
+
+});
+
+############################# End Ajax routes ########################################

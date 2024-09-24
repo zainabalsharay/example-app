@@ -32,4 +32,6 @@ return [
     'delete' => 'حذف',
     'Offer not exist' => 'العرض غير موجود',
     'offer deleted successfully' => 'تم حذف العرض بنجاح',
+    'saved successfully!' => 'تم الحفظ بنجاح',
+    'Fails Save Please Again!!!' => 'فشل الحفظ الرجاء المحاولة مجددا',
 ];
