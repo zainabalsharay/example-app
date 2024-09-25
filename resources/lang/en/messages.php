@@ -32,6 +32,7 @@ return [
     'delete' => 'delete',
     'Offer not exist' => 'Offer is not found',
     'offer deleted successfully' => 'offer deleted successfully',
-    'saved successfully!' => 'saved successfully!',
     'Fails Save Please Again!!!' => 'Fails Save Please Again!!!',
+    'delete Ajax' => 'delete Ajax',
+    'Update Ajax' => 'Update Ajax',
 ];

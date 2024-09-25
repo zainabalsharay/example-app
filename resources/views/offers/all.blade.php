@@ -900,7 +900,8 @@
                     <td>{{ $offer->name }}</td>
                     <td>{{ $offer->price }}</td>
                     <td>{{ $offer->detalis }}</td>
-                    <td><img src="{{ asset('images/offers/' . $offer->photo) }}"></td>
+                    <td><img src="{{ asset('images/offers/' . $offer->photo) }}" style="width: 100px; height: auto;">
+                    </td>
                     <td>
                         <a href="{{ url('offers/edit/' . $offer->id) }}" class="btn btn-success">
                             {{ __('messages.update') }}

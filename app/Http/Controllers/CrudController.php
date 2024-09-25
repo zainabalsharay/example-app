@@ -99,6 +99,7 @@ class CrudController extends Controller
     {
         $offers = Offer::select(
             'id',
+            'photo',
             'price',
             'name_' . LaravelLocalization::getCurrentLocale() . ' as name',
             'detalis_' . LaravelLocalization::getCurrentLocale() . ' as detalis')->get(); //return collection

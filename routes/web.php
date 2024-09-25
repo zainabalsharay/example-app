@@ -214,6 +214,7 @@ Route::get('/', function () {
 
 Route::get('fillable', [CrudController::class, 'getOffers']);
 
+############################################################################
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
@@ -241,6 +242,10 @@ Route::group([
 Route::group(['prefix' => 'Ajax-offers'], function () {
     Route::get('create', [OfferController::class, 'create']);
     Route::post('store', [OfferController::class, 'store'])->name('ajax.offers.store');
+    Route::get('all', [OfferController::class, 'getAllOffers'])->name('ajax.offers.all');
+    Route::post('delete', [OfferController::class, 'deleteOffer'])->name('ajax.offers.delete');
+    Route::get('edit/{offer_id}', [OfferController::class, 'editOffer'])->name('ajax.offers.edit');
+    Route::post('update', [OfferController::class, 'updateOffer'])->name('ajax.offers.update');
 
 });
 

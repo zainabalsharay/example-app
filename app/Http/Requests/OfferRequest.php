@@ -27,6 +27,7 @@ class OfferRequest extends FormRequest
             'price' => 'required|numeric',
             'detalis_ar' => 'required',
             'detalis_en' => 'required',
+            //'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
     public function messages(): array

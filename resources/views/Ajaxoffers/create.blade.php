@@ -5,12 +5,12 @@
         <div
             class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             <div class="content">
-                {{-- عرض رسالة النجاح  --}}
+                {{-- عرض رسالة النجاح 
                 @if (Session::has('success'))
                     <div class="alert alert-success">
                         {{ Session::get('success') }}
                     </div>
-                @endif
+                @endif --}}
 
                 <h1 style="font-size: 3em">{{ __('messages.Add your offer') }}</h1><br><br>
 
@@ -19,26 +19,24 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">{{ __('messages.choose image offer') }}</label>
                         <input type="file" class="form-control" name="photo">
-                        @error('photo')
-                            <small class="form-text text-danger">{{ $message }}</small>
-                        @enderror
+                        <small id="photo_error" class="form-text text-danger"></small>
+
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">{{ __('messages.Offer Name ar') }}</label>
                         <input type="text" class="form-control" name="name_ar"
                             placeholder="{{ __('messages.Offer Name ar') }}">
-                        @error('name_ar')
-                            <small class="form-text text-danger">{{ $message }}</small>
-                        @enderror
+
+                        <small id="name_ar_error" class="form-text text-danger"></small>
+
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">{{ __('messages.Offer Name en') }}</label>
                         <input type="text" class="form-control" name="name_en"
                             placeholder="{{ __('messages.Offer Name en') }}">
-                        @error('name_en')
-                            <small class="form-text text-danger">{{ $message }}</small>
-                        @enderror
+                        <small id="name_en_error" class="form-text text-danger"></small>
+
                     </div>
 
 
@@ -46,32 +44,29 @@
                         <label for="exampleInputPassword1">{{ __('messages.Offer Price') }}</label>
                         <input type="text" class="form-control" name="price"
                             placeholder="{{ __('messages.Offer Price') }}">
-                        @error('price')
-                            <small class="form-text text-danger">{{ $message }}</small>
-                        @enderror
+                        <small id="price_error" class="form-text text-danger"></small>
+
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">{{ __('messages.Offer detalis ar') }}</label>
                         <input type="text" class="form-control" name="detalis_ar"
                             placeholder="{{ __('messages.Offer detalis ar') }}">
-                        @error('detalis_ar')
-                            <small class="form-text text-danger">{{ $message }}</small>
-                        @enderror
+                        <small id="detalis_ar_error" class="form-text text-danger"></small>
+
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">{{ __('messages.Offer detalis en') }}</label>
                         <input type="text" class="form-control" name="detalis_en"
                             placeholder="{{ __('messages.Offer detalis en') }}">
-                        @error('detalis_en')
-                            <small class="form-text text-danger">{{ $message }}</small>
-                        @enderror
+                        <small id="detalis_en_error" class="form-text text-danger"></small>
+
                     </div>
                     <br><br>
                     <button id="save_offer" class="btn btn-primary">{{ __('messages.Save Offer') }}</button>
                 </form><br>
                 <div class="alert alert-success" id="success_msg" style="display: none;">
-                    {{ __('messages.saved successfully!') }}
+                    {{ __('messages.Offer saved successfully!') }}
                 </div>
 
             </div>
@@ -83,6 +78,18 @@
     <script>
         $(document).on('click', '#save_offer', function(e) {
             e.preventDefault();
+
+            // // تفريغ النصوص الموجودة في حقول الأخطاء
+            // $('#photo_error').text("");
+            // $('#name_ar_error').text("");
+            // $('#name_en_error').text("");
+            // $('#price_error').text("");
+            // $('#detalis_ar_error').text("");
+            // $('#detalis_en_error').text("");
+
+            // تفريغ النصوص الموجودة في حقول الأخطاء بسطر واحد باستخدام اسم الكلاس
+            $('.form-text.text-danger').text("");
+
             var formData = new FormData($('#offerForm')[0]);
             $.ajax({
                 type: 'POST',
@@ -97,7 +104,13 @@
                         $('#success_msg').show();
                     }
                 },
-                error: function(reject) {}
+                error: function(reject) {
+                    var response = JSON.parse(reject.responseText);
+                    $.each(response.errors, function(key, val) {
+                        $('#' + key + "_error").text(val[0]);
+
+                    });
+                }
 
             });
         });
