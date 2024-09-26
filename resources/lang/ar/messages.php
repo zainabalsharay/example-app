@@ -35,4 +35,5 @@ return [
     'Fails Save Please Again!!!' => 'فشل الحفظ الرجاء المحاولة مجددا',
     'delete Ajax' => 'حذف اجاكس',
     'Update Ajax' => 'تعديل اجاكس',
+    //'You Are Allowed' => 'مسموح لك الدخول',
 ];

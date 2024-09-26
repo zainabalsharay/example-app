@@ -2,10 +2,12 @@
 
 use App\Enums\CategoryEnum;
 use App\Http\Controllers\Admin\SecondController;
+use App\Http\Controllers\Auth\CustomAuthController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\Front\UserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\OfferController;
+use App\Http\Controllers\OfferControllerAjax;
 use App\Http\Controllers\Youtub\YoutubController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -188,6 +190,10 @@ Route::resource('news', NewsController::class);
 
 //////////////////////////////////////////
 
+Route::get('/dashboard', function () {
+    return 'Not adualts';
+})->name('not.adualts');
+
 // Auth::routes(); // إنشاء مسارات المصادقة
 
 // Route::get('/dashboard', function () {
@@ -206,7 +212,7 @@ Route::resource('news', NewsController::class);
 
 Auth::routes(['verify' => true]);
 
-//Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('verified');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('verified');
 
 Route::get('/', function () {
     return 'Home';
@@ -240,13 +246,20 @@ Route::group([
 
 ############################# Begin Ajax routes ########################################
 Route::group(['prefix' => 'Ajax-offers'], function () {
-    Route::get('create', [OfferController::class, 'create']);
-    Route::post('store', [OfferController::class, 'store'])->name('ajax.offers.store');
-    Route::get('all', [OfferController::class, 'getAllOffers'])->name('ajax.offers.all');
-    Route::post('delete', [OfferController::class, 'deleteOffer'])->name('ajax.offers.delete');
-    Route::get('edit/{offer_id}', [OfferController::class, 'editOffer'])->name('ajax.offers.edit');
-    Route::post('update', [OfferController::class, 'updateOffer'])->name('ajax.offers.update');
+    Route::get('create', [OfferControllerAjax::class, 'create']);
+    Route::post('store', [OfferControllerAjax::class, 'store'])->name('ajax.offers.store');
+    Route::get('all', [OfferControllerAjax::class, 'getAllOffers'])->name('ajax.offers.all');
+    Route::post('delete', [OfferControllerAjax::class, 'deleteOffer'])->name('ajax.offers.delete');
+    Route::get('edit/{offer_id}', [OfferControllerAjax::class, 'editOffer'])->name('ajax.offers.edit');
+    Route::post('update', [OfferControllerAjax::class, 'updateOffer'])->name('ajax.offers.update');
 
 });
 
 ############################# End Ajax routes ########################################
+
+####################### Begin Authentication && Guards ##################################
+Route::group(['middleware' => 'CheckAge'], function () {
+    Route::get('adults', [CustomAuthController::class, 'adualt'])->name('adults');
+
+});
+####################### End Authentication && Guards ##################################

@@ -35,4 +35,5 @@ return [
     'Fails Save Please Again!!!' => 'Fails Save Please Again!!!',
     'delete Ajax' => 'delete Ajax',
     'Update Ajax' => 'Update Ajax',
+    //'You Are Allowed' => 'You Are Allowed',
 ];

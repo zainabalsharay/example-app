@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class OfferController extends Controller
+class OfferControllerAjax extends Controller
 {
     use OfferTrait;
     public function create()
     {
         //view form to add this offer
-        return view('Ajaxoffers.create');
+        return view('ajaxoffers.create');
     }
     public function store(OfferRequest $request)
     {
@@ -53,7 +53,7 @@ class OfferController extends Controller
             'price',
             'name_' . LaravelLocalization::getCurrentLocale() . ' as name',
             'detalis_' . LaravelLocalization::getCurrentLocale() . ' as detalis')->limit(10)->get(); //return collection
-        return view('Ajaxoffers.all', compact('offers'));
+        return view('ajaxoffers.all', compact('offers'));
     }
 
     public function deleteOffer(Request $request)
@@ -87,7 +87,7 @@ class OfferController extends Controller
         }
         $offer = Offer::select('photo', 'id', 'name_ar', 'name_en', 'price', 'detalis_ar', 'detalis_en')->find($offer_id);
 
-        return view('Ajaxoffers.edit', compact('offer'));
+        return view('ajaxoffers.edit', compact('offer'));
     }
     public function updateOffer(OfferRequest $request)
     {
