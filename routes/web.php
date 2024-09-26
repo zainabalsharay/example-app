@@ -8,7 +8,9 @@ use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OfferControllerAjax;
+use App\Http\Controllers\Relation\RelationController;
 use App\Http\Controllers\Youtub\YoutubController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -270,3 +272,9 @@ Route::get('admin/login', [CustomAuthController::class, 'adminlogin'])->name('ad
 Route::post('admin/login', [CustomAuthController::class, 'checkadminlogin'])->name('save.admin.login');
 
 ####################### End Authentication && Guards ##################################
+
+################################ Begin relations routes ##############################
+Route::get('has-one', [RelationController::class, 'hasOneRelation']);
+
+
+################################ End relations routes ##############################
