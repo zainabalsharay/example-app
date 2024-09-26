@@ -8,7 +8,6 @@ use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OfferControllerAjax;
-use App\Http\Controllers\Youtub\YoutubController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -240,7 +239,7 @@ Route::group([
         Route::get('delete/{offer_id}', [CrudController::class, 'deleteOffer'])->name('offers.delete');
     });
     //route of youtub
-    Route::get('/youtube', [YoutubController::class, 'getVideo'])->name('youtube')->middleware('verified');
+    //Route::get('/youtube', [YoutubController::class, 'getVideo'])->name('youtube')->middleware('verified');
 
 });
 
@@ -262,4 +261,11 @@ Route::group(['middleware' => 'CheckAge'], function () {
     Route::get('adults', [CustomAuthController::class, 'adualt'])->name('adults');
 
 });
+
+Route::get('site', [CustomAuthController::class, 'site'])->middleware('auth:web')->name('site');
+Route::get('admin', [CustomAuthController::class, 'admin'])->middleware('auth:admin')->name('admin');
+
+Route::get('admin/login', [CustomAuthController::class, 'adminlogin'])->name('admin.login');
+Route::post('admin/login', [CustomAuthController::class, 'checkadminlogin'])->name('save.admin.login');
+
 ####################### End Authentication && Guards ##################################
