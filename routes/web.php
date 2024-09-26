@@ -8,6 +8,7 @@ use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OfferControllerAjax;
+use App\Http\Controllers\Youtub\YoutubController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -239,7 +240,7 @@ Route::group([
         Route::get('delete/{offer_id}', [CrudController::class, 'deleteOffer'])->name('offers.delete');
     });
     //route of youtub
-    //Route::get('/youtube', [YoutubController::class, 'getVideo'])->name('youtube')->middleware('verified');
+    Route::get('/youtube', [YoutubController::class, 'getVideo'])->name('youtube');
 
 });
 
