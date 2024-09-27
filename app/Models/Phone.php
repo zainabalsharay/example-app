@@ -18,6 +18,7 @@ class Phone extends Model
         'user_id',
     ];
     public $timestamps = false;
+
     ################## Begin relations #################
     public function user()
     {

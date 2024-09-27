@@ -10,7 +10,6 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OfferControllerAjax;
 use App\Http\Controllers\Relation\RelationController;
 use App\Http\Controllers\Youtub\YoutubController;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -276,5 +275,10 @@ Route::post('admin/login', [CustomAuthController::class, 'checkadminlogin'])->na
 ################################ Begin relations routes ##############################
 Route::get('has-one', [RelationController::class, 'hasOneRelation']);
 
+Route::get('has-one-reserve', [RelationController::class, 'hasOneRelationReverse']);
+
+Route::get('get-user-has-phones', [RelationController::class, 'getUserHasPhones']);
+
+Route::get('get-user-not-has-phones', [RelationController::class, 'getUserNotHasPhones']);
 
 ################################ End relations routes ##############################
