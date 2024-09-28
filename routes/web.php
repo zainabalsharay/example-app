@@ -281,4 +281,23 @@ Route::get('get-user-has-phones', [RelationController::class, 'getUserHasPhones'
 
 Route::get('get-user-not-has-phones', [RelationController::class, 'getUserNotHasPhones']);
 
+######################### Begin one to many relationship ################################
+Route::get('hospital-has-many', [RelationController::class, 'getHospitalDoctors']);
+
+Route::get('hospitals', [RelationController::class, 'hospitals'])->name('hospitals');
+
+Route::get('hospitals/{id_hospital}', [RelationController::class, 'deleteHospitals'])->name('deleteHospitals');
+
+Route::get('doctors/{id_hospital}', [RelationController::class, 'doctors'])->name('doctors');
+
+Route::post('doctors/{id_doctor}', [RelationController::class, 'deletsDoctor'])->name('delets');
+
+Route::get('hospitals_has_doctors', [RelationController::class, 'getHospitalsHasDoctor']);
+
+Route::get('hospitals_has_doctors_male', [RelationController::class, 'getHospitalsHasDoctorMale']);
+
+Route::get('hospitals_not_has_doctors', [RelationController::class, 'getHospitalsNotHasDoctor']);
+
+######################### End one to many relationship ################################
+
 ################################ End relations routes ##############################
