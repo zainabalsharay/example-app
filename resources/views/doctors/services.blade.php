@@ -30,12 +30,14 @@
                         <tr>
                             <th scope="row">{{ $s->id }}</th>
                             <td>{{ $s->name }}</td>
-                            {{-- <td>
-                                <form action="{{ route('delets', $s->id) }}" method="POST" style="display: inline;">
+                            <td>
+                                <form
+                                    action="{{ route('delets.doctors.services', ['service_id' => $s->id, 'doctor_id' => $doctor_id]) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     <button type="submit" class="btn btn-danger">حذف الخدمه</button>
                                 </form>
-                            </td> --}}
+                            </td>
                         </tr>
                     @endforeach
                 @endif
@@ -43,7 +45,7 @@
         </table>
         <br><br> <br><br>
 
-        <form method="POST" action="{{ route('save-doctors.services') }}">
+        <form method="POST" action="{{ route('save.doctors.services') }}">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">اختر طبيب</label>
@@ -67,7 +69,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">حفظ</button>
+            <button type="submit" class="btn btn-primary">اضافة خدمه للطبيب</button>
         </form>
 
 

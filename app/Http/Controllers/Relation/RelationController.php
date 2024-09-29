@@ -179,6 +179,7 @@ class RelationController extends Controller
         return $services = $doctor->services;
 
     }
+
     public function getServiceDoctor()
     {
         // $service = Service::find(1);
@@ -199,18 +200,23 @@ class RelationController extends Controller
             });
         }
         return $Service_doctors;
-
     }
 
-    public function getDoctorServic($doctorId)
+    public function getDoctorServic($doctor_id)
     {
-        $doctor = Doctor::find($doctorId);
-        $service = $doctor->services;
+        $services = Service::whereHas('doctors', function ($query) use ($doctor_id) {
+            $query->where('doctor_id', $doctor_id);
+        })->get();
 
-        $doctors = Doctor::select('id', 'name')->get();
-        $allservices = Service::select('id', 'name')->get();
+        $allServices = Service::all();
+        $doctors = Doctor::all();
 
-        return view('doctors.services', compact('service', 'doctors', 'allservices'));
+        return view('doctors.services', [
+            'service' => $services,
+            'allservices' => $allServices,
+            'doctors' => $doctors,
+            'doctor_id' => $doctor_id, // هنا نمرر معرف الطبيب إلى طريقة العرض
+        ]);
     }
 
     public function saveServicesToDoctor(Request $request)
@@ -223,7 +229,28 @@ class RelationController extends Controller
         //$doctor->services()->sync($request->service_id);//insert into database and delete of old database==update
         $doctor->services()->syncWithoutDetaching($request->service_id); //insert into database and add only not again
         return 'success';
+    }
 
+    public function deleteServicesToDoctor($service_id, $doctor_id)
+    {
+        // البحث عن الخدمة باستخدام المعرف
+        $service = Service::find($service_id);
+
+        // تحقق مما إذا كانت الخدمة موجودة
+        if (!$service) {
+            return redirect()->back()->with('error', 'لم يتم العثور على الخدمة المطلوبة');
+        }
+
+        // تحقق مما إذا كان الطبيب مرتبطًا بالخدمة
+        if (!$service->doctors()->where('doctor_id', $doctor_id)->exists()) {
+            return redirect()->back()->with('error', 'لم يتم العثور على الطبيب المرتبط بالخدمة المطلوبة');
+        }
+
+        // حذف العلاقة بين الطبيب والخدمة
+        $service->doctors()->detach($doctor_id);
+
+        // إعادة التوجيه مع رسالة النجاح
+        return redirect()->route('doctors.services', $doctor_id)->with('success', 'تم حذف الخدمة من الطبيب بنجاح');
     }
 
 }

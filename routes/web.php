@@ -309,7 +309,11 @@ Route::get('services_doctors', [RelationController::class, 'getServiceDoctor']);
 
 Route::get('doctors/services/{id_doctor}', [RelationController::class, 'getDoctorServic'])->name('doctors.services');
 
-Route::post('saveServices-to-doctor', [RelationController::class, 'saveServicesToDoctor'])->name('save-doctors.services');
+Route::post('saveServices-to-doctor', [RelationController::class, 'saveServicesToDoctor'])->name('save.doctors.services');
+
+Route::post('services/{service_id}/{doctor_id}', [RelationController::class, 'deleteServicesToDoctor'])->name('delets.doctors.services');
+
+//Route::post('deleteServices-to-doctor/{id_service}', [RelationController::class, 'deleteServicesToDoctor'])->name('delets.doctors.services');
 
 ######################### End many to many relationship ################################
 
