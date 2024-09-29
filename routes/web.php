@@ -282,6 +282,7 @@ Route::get('get-user-has-phones', [RelationController::class, 'getUserHasPhones'
 Route::get('get-user-not-has-phones', [RelationController::class, 'getUserNotHasPhones']);
 
 ######################### Begin one to many relationship ################################
+
 Route::get('hospital-has-many', [RelationController::class, 'getHospitalDoctors']);
 
 Route::get('hospitals', [RelationController::class, 'hospitals'])->name('hospitals');
@@ -299,5 +300,13 @@ Route::get('hospitals_has_doctors_male', [RelationController::class, 'getHospita
 Route::get('hospitals_not_has_doctors', [RelationController::class, 'getHospitalsNotHasDoctor']);
 
 ######################### End one to many relationship ################################
+
+######################### Begin many to many relationship ################################
+
+Route::get('doctors_services', [RelationController::class, 'getDoctorServices']);
+
+Route::get('services_doctors', [RelationController::class, 'getServiceDoctor']);
+
+######################### End many to many relationship ################################
 
 ################################ End relations routes ##############################

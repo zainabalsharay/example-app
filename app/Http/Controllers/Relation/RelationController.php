@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Hospital;
 use App\Models\Phone;
+use App\Models\Service;
 use App\Models\User;
 
 class RelationController extends Controller
@@ -57,6 +58,7 @@ class RelationController extends Controller
     {
         return User::whereDoesntHave('phone')->get();
     }
+
     ######################## one to many relationship methods#########################
 
     public function getHospitalDoctors()
@@ -166,5 +168,37 @@ class RelationController extends Controller
         return $hospital;
     }
 
-    #######################################
+    ######################## many to many relationship methods #########################
+    public function getDoctorServices()
+    {
+        $doctor = Doctor::with('services')->find(21);
+        if (!$doctor) {
+            return response()->json(['error' => 'لم يتم العثور على الطبيب المطلوب'], 404);
+        }
+        return $services = $doctor->services;
+
+    }
+    public function getServiceDoctor()
+    {
+        // $service = Service::find(1);
+        // return $doctor = $service->doctors; //display the doctore
+        //return $doctors = Service::find(1)->doctors;//another another
+
+        // return $doctors = Service::with(['doctors' => function ($q) {
+        //     $q->select('doctors.id', 'name', 'title');
+        // }])->find(2); //display service with doctor
+
+        //$Service_doctors = Service::with('doctors')->find(2)->doctors->makeHidden(['hospital_id', 'gender']);//display collect donly doctors
+
+        $Service_doctors = Service::with('doctors')->find(2); //display service with doctor
+
+        if ($Service_doctors) {
+            $Service_doctors->doctors->each(function ($q) {
+                $q->makeHidden(['hospital_id', 'gender']);
+            });
+        }
+        return $Service_doctors;
+
+    }
+
 }

@@ -20,12 +20,19 @@ class Doctor extends Model
     protected $hidden = [
         'created_at',
         'updated_at',
+        'pivot',
+        // 'hospital_id',
+        // 'gender',
     ];
     public $timestamps = true; //default
 
     public function hospital()
     {
         return $this->belongsTo(Hospital::class, 'hospital_id');
+    }
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'doctors_service', 'doctor_id', 'service_id');
     }
 
 }
