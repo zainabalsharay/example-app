@@ -35,7 +35,9 @@
                             <td>
                                 <form action="{{ route('delets', $d->id) }}" method="POST" style="display: inline;">
                                     @csrf
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <a href="{{ route('doctors.services', $d->id) }}" class="btn btn-success">عرض
+                                        الخدمات</a>&nbsp;&nbsp;
+                                    <button type="submit" class="btn btn-danger">حذف</button>
                                 </form>
                             </td>
                         </tr>

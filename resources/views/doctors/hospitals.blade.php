@@ -33,8 +33,8 @@
                             <td>{{ $h->name }}</td>
                             <td>{{ $h->address }}</td>
                             {{-- <td><a href="{{ url('doctors/' . $h->id) }}" class="btn btn-success">show doctors</a></td> --}}
-                            <td><a href="{{ route('doctors', $h->id) }}" class="btn btn-success">show doctors</a></td>
-                            <td><a href="{{ route('deleteHospitals', $h->id) }}" class="btn btn-danger">delete hospital</a>
+                            <td><a href="{{ route('doctors', $h->id) }}" class="btn btn-success">عرض الاطباء</a></td>
+                            <td><a href="{{ route('deleteHospitals', $h->id) }}" class="btn btn-danger">حذف</a>
                             </td>
 
                         </tr>

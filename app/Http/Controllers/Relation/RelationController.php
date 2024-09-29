@@ -8,6 +8,7 @@ use App\Models\Hospital;
 use App\Models\Phone;
 use App\Models\Service;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class RelationController extends Controller
 {
@@ -198,6 +199,30 @@ class RelationController extends Controller
             });
         }
         return $Service_doctors;
+
+    }
+
+    public function getDoctorServic($doctorId)
+    {
+        $doctor = Doctor::find($doctorId);
+        $service = $doctor->services;
+
+        $doctors = Doctor::select('id', 'name')->get();
+        $allservices = Service::select('id', 'name')->get();
+
+        return view('doctors.services', compact('service', 'doctors', 'allservices'));
+    }
+
+    public function saveServicesToDoctor(Request $request)
+    {
+        $doctor = Doctor::find($request->doctor_id);
+        if (!$doctor) {
+            return redirect()->back()->with('error', 'لم يتم العثور على الطبيب المطلوب');
+        }
+        // $doctor->services()->attach($request->service_id); ///many to many insert to database with again
+        //$doctor->services()->sync($request->service_id);//insert into database and delete of old database==update
+        $doctor->services()->syncWithoutDetaching($request->service_id); //insert into database and add only not again
+        return 'success';
 
     }
 
